@@ -1,0 +1,53 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  text-decoration: none;
+  color: var(--mantine-color-black);
+  font-weight: 500;
+  font-size: var(--mantine-font-size-md);
+}
+
+.link::before {
+  position: absolute;
+  left: -10px;
+  top: 35%;
+  width: 16px;
+  height: 16px;
+  content: "";
+  background: var(--mantine-color-brandOrange-6);
+  border-radius: 50% 50% 50% 0;
+  transform: translateY(-50%) rotate(-45deg) scale(0);
+  transform-origin: center;
+  transition: transform 200ms ease;
+}
+
+.link::after {
+  position: absolute;
+  left: -5px;
+  top: 35%;
+  width: 6px;
+  height: 6px;
+  content: "";
+  background: white;
+  border-radius: 50%;
+  transform: translateY(-50%) scale(0);
+  transition: transform 200ms ease;
+}
+
+.link:hover::before {
+  transform: translateY(-50%) rotate(-45deg) scale(1);
+}
+
+.link:hover::after {
+  transform: translateY(-50%) scale(1);
+}
+
+.menuWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10;
+  margin-left: 10;
+}
