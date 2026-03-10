@@ -8,12 +8,12 @@ import Image from "next/image";
 import { Menu } from "./components/Menu";
 import { SignInButtons } from "./components/SignInButtons";
 
-export function Navbar() {
+export const Navbar = () => {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
 
   return (
-    <Box pb={120}>
+    <Box>
       <header>
         <Group justify="space-between" h="100%" mx="lg">
           <Image src={logo} width={200} height={100} alt="Logo" />
@@ -52,4 +52,4 @@ export function Navbar() {
       </Drawer>
     </Box>
   );
-}
+};
