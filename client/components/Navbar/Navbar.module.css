@@ -7,7 +7,7 @@
   text-decoration: none;
   color: var(--mantine-color-black);
   font-weight: 500;
-  font-size: var(--mantine-font-size-md);
+  font-size: var(--mantine-font-size-xl);
 }
 
 .link::before {
