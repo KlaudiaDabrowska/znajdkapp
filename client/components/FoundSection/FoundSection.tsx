@@ -58,12 +58,7 @@ export const FoundSection = () => {
             <Carousel.Slide key={item.id}>
               <Card radius="xl" className={classes.card}>
                 <Card.Section className={classes.imageWrapper}>
-                  <Image
-                    src={item.image}
-                    alt={item.city}
-                    className={classes.image}
-                    fill
-                  />
+                  <Image src={item.image} alt={item.city} className={classes.image} fill />
                 </Card.Section>
 
                 <div className={classes.cardContent}>
