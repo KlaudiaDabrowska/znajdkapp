@@ -1,6 +1,10 @@
-import { Control, Controller, FieldValues, Path } from "react-hook-form";
-import styles from "../styles/Forms.module.css";
 import { TextInput } from "@mantine/core";
+import { Controller } from "react-hook-form";
+
+import styles from "../styles/Forms.module.css";
+
+import type { Control, FieldValues, Path } from "react-hook-form";
+
 
 export type Props<T extends FieldValues> = {
   control: Control<T>;

@@ -1,12 +1,15 @@
 "use client";
 
-import { Container, Title, Text, Card, Group } from "@mantine/core";
-import { Carousel } from "@mantine/carousel";
-import { IconPhone } from "@tabler/icons-react";
-import classes from "./FoundSection.module.css";
-import "@mantine/carousel/styles.css";
-import hero from "../../public/hero.png";
 import Image from "next/image";
+
+import { Carousel } from "@mantine/carousel";
+import { Container, Title, Text, Card, Group } from "@mantine/core";
+import { IconPhone } from "@tabler/icons-react";
+
+import "@mantine/carousel/styles.css";
+
+import classes from "./FoundSection.module.css";
+import hero from "../../public/hero.png";
 
 const data = [
   {
@@ -58,12 +61,7 @@ export const FoundSection = () => {
             <Carousel.Slide key={item.id}>
               <Card radius="xl" className={classes.card}>
                 <Card.Section className={classes.imageWrapper}>
-                  <Image
-                    src={item.image}
-                    alt={item.city}
-                    className={classes.image}
-                    fill
-                  />
+                  <Image src={item.image} alt={item.city} className={classes.image} fill />
                 </Card.Section>
 
                 <div className={classes.cardContent}>
