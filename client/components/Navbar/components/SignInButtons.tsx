@@ -1,5 +1,6 @@
-import { Button, useMantineTheme } from "@mantine/core";
 import Link from "next/link";
+
+import { Button, useMantineTheme } from "@mantine/core";
 
 export const SignInButtons = () => {
   const theme = useMantineTheme();

@@ -1,16 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import styles from "./register.module.css";
-import { nunito } from "../theme";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Image from "next/image";
-import hero from "../../public/hero.png";
+
 import { Input } from "@/components/Forms/Input";
 import { PasswordInput } from "@/components/Forms/PasswordInput";
+
+import hero from "../../public/hero.png";
+import { nunito } from "../theme";
+import styles from "./register.module.css";
 
 const schema = z.object({
   email: z.email("Nieprawidłowy email"),
@@ -29,15 +31,15 @@ export default function Register() {
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = useForm<FormState>({ resolver: zodResolver(schema) });
 
   async function onSubmit(data: FormState) {
     try {
       await new Promise((r) => setTimeout(r, 800));
       alert("Rejestracja przebiegła pomyślnie");
-    } catch (err) {
-      console.error(err);
+      console.log(data);
+    } catch {
       alert("Wystąpił błąd podczas rejestracji");
     }
   }
@@ -47,9 +49,7 @@ export default function Register() {
       <div className={styles.left}>
         <div className={styles.formCard}>
           <h2 className={styles.title}>Utwórz konto</h2>
-          <p className={styles.subtitle}>
-            Wypełnij formularz, aby założyć konto.
-          </p>
+          <p className={styles.subtitle}>Wypełnij formularz, aby założyć konto.</p>
 
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <Input<FormState>
@@ -64,12 +64,7 @@ export default function Register() {
               placeholder="+48 123 456 789"
               name="phone"
             />
-            <Input<FormState>
-              control={control}
-              label="Imię"
-              placeholder="Jan"
-              name="firstName"
-            />
+            <Input<FormState> control={control} label="Imię" placeholder="Jan" name="firstName" />
             <Input<FormState>
               control={control}
               label="Miejscowość"
@@ -82,11 +77,7 @@ export default function Register() {
               placeholder="Twoje hasło"
               name="password"
             />
-            <button
-              className={styles.submit}
-              type="submit"
-              disabled={isSubmitting}
-            >
+            <button className={styles.submit} type="submit" disabled={isSubmitting}>
               {isSubmitting ? "Trwa wysyłanie..." : "Zarejestruj się"}
             </button>
           </form>

@@ -1,13 +1,11 @@
-import type { Metadata } from "next";
-
 import "@mantine/core/styles.css";
-import {
-  ColorSchemeScript,
-  MantineProvider,
-  mantineHtmlProps,
-} from "@mantine/core";
-import { nunito, theme } from "./theme";
+import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from "@mantine/core";
+
 import { Navbar } from "@/components/Navbar";
+
+import { nunito, theme } from "./theme";
+
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Create Next App",

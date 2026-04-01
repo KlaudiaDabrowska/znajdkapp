@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
+
 import { Button, Container, Title, Text, Group } from "@mantine/core";
 import { IconPaw, IconSearch } from "@tabler/icons-react";
+
 import classes from "./HeroSection.module.css";
-import Image from "next/image";
 import hero from "../../public/hero.png";
 
 export const HeroSection = () => {

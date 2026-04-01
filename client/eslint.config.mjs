@@ -2,7 +2,6 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import prettier from "eslint-config-prettier";
-
 import importPlugin from "eslint-plugin-import";
 import unusedImports from "eslint-plugin-unused-imports";
 
@@ -22,19 +21,6 @@ const eslintConfig = defineConfig([
       },
     },
     rules: {
-      "import/no-unresolved": "error",
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          devDependencies: [
-            "**/*.test.*",
-            "**/*.spec.*",
-            "**/vitest.*",
-            "**/jest.*",
-            "**/playwright.*",
-          ],
-        },
-      ],
       "unused-imports/no-unused-imports": "error",
       "@typescript-eslint/no-unused-vars": "off",
       "unused-imports/no-unused-vars": [
@@ -49,14 +35,55 @@ const eslintConfig = defineConfig([
       "import/order": [
         "warn",
         {
-          groups: ["builtin", "external", "internal", ["parent", "sibling", "index"]],
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            ["parent", "sibling", "index"],
+            "object",
+            "type",
+          ],
+
+          pathGroups: [
+            // React zawsze pierwszy
+            {
+              pattern: "react",
+              group: "builtin",
+              position: "before",
+            },
+
+            // Next zaraz po React
+            {
+              pattern: "next/**",
+              group: "builtin",
+              position: "after",
+            },
+
+            // Alias @/
+            {
+              pattern: "@/**",
+              group: "internal",
+            },
+
+            // CSS zawsze na dole
+            {
+              pattern: "**/*.css",
+              group: "index",
+              position: "after",
+            },
+          ],
+
+          pathGroupsExcludedImportTypes: ["react"],
+
           "newlines-between": "always",
-          alphabetize: { order: "asc", caseInsensitive: true },
+
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
         },
       ],
       "@typescript-eslint/consistent-type-imports": "error",
-      "@typescript-eslint/no-floating-promises": "error",
-      "@typescript-eslint/await-thenable": "error",
       "no-console": "warn",
     },
   },

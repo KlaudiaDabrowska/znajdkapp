@@ -1,6 +1,6 @@
 import Link from "next/link";
+
 import classes from "../Navbar.module.css";
-import { Box } from "@mantine/core";
 
 export const Menu = () => {
   return (
